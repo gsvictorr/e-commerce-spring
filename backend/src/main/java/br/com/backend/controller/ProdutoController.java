@@ -29,6 +29,12 @@ public class ProdutoController {
         return produtoSer.buscarTodos();
     }
 
+    // buscar por id
+    @GetMapping("/{id}")
+    public Produto buscarPorId(@PathVariable("id") Long id) {
+        return produtoSer.buscarPorId(id);
+    }
+
     // adicionar produto
     @PostMapping("/")
     public Produto inserir(@RequestBody Produto produto) {
