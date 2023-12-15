@@ -19,6 +19,11 @@ public class ProdutoService {
         return produtoRep.findAll();
     }
 
+    public Produto buscarPorId(Long id) {
+        Produto produto = produtoRep.findById(id).get();
+        return produto;
+    }
+
     public Produto inserir(Produto produto) {
         produto.setDataCriacao(new Date());
         Produto produtoNovo = produtoRep.saveAndFlush(produto);
