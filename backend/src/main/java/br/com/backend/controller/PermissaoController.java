@@ -1,10 +1,5 @@
 package br.com.backend.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import br.com.backend.entity.Estado;
-import br.com.backend.service.EstadoService;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,39 +11,41 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.backend.entity.Permissao;
+import br.com.backend.service.PermissaoService;
 
 @RestController
-@RequestMapping("/api/estado")
-
-public class EstadoController {
+@RequestMapping("/api/permissao")
+public class PermissaoController {
 
     @Autowired
-    private EstadoService estadoSer;
+    private PermissaoService permissaoSer;
 
-    // busca de estados
+    // busca de Permissao
     @GetMapping("/")
-    public List<Estado> buscarTodos() {
-        return estadoSer.buscarTodos();
+    public List<Permissao> buscarTodos() {
+        return permissaoSer.buscarTodos();
     }
 
-    // adicionar estado
+    // adicionar Permissao
     @PostMapping("/")
-    public Estado inserir(@RequestBody Estado estado) {
-        return estadoSer.inserir(estado);
+    public Permissao inserir(@RequestBody Permissao permissao) {
+        return permissaoSer.inserir(permissao);
     }
 
-    // alterar estado
+    // alterar Permissao
     @PutMapping("/")
-    public Estado alterar(@RequestBody Estado estado) {
-        return estadoSer.alterar(estado);
+    public Permissao alterar(@RequestBody Permissao permissao) {
+        return permissaoSer.alterar(permissao);
 
     }
 
-    // deletar estado
+    // deletar Permissao
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
-        estadoSer.excluir(id);
+        permissaoSer.excluir(id);
         return ResponseEntity.ok().build();
     }
-
 }

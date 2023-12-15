@@ -1,10 +1,5 @@
 package br.com.backend.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import br.com.backend.entity.Estado;
-import br.com.backend.service.EstadoService;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,39 +11,42 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.backend.entity.Cidade;
+import br.com.backend.service.CidadeService;
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/cidade")
 
-public class EstadoController {
+public class CidadeController {
 
     @Autowired
-    private EstadoService estadoSer;
+    private CidadeService cidadeSer;
 
-    // busca de estados
+    // busca de cidades
     @GetMapping("/")
-    public List<Estado> buscarTodos() {
-        return estadoSer.buscarTodos();
+    public List<Cidade> buscarTodos() {
+        return cidadeSer.buscarTodos();
     }
 
-    // adicionar estado
+    // adicionar cidades
     @PostMapping("/")
-    public Estado inserir(@RequestBody Estado estado) {
-        return estadoSer.inserir(estado);
+    public Cidade inserir(@RequestBody Cidade cidade) {
+        return cidadeSer.inserir(cidade);
     }
 
-    // alterar estado
+    // alterar cidades
     @PutMapping("/")
-    public Estado alterar(@RequestBody Estado estado) {
-        return estadoSer.alterar(estado);
+    public Cidade alterar(@RequestBody Cidade cidade) {
+        return cidadeSer.alterar(cidade);
 
     }
 
-    // deletar estado
+    // deletar cidades
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
-        estadoSer.excluir(id);
+        cidadeSer.excluir(id);
         return ResponseEntity.ok().build();
     }
-
 }

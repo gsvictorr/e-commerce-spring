@@ -2,8 +2,8 @@ package br.com.backend.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.backend.entity.Estado;
-import br.com.backend.service.EstadoService;
+import br.com.backend.entity.Categoria;
+import br.com.backend.service.CategoriaService;
 
 import java.util.List;
 
@@ -18,36 +18,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/categoria")
 
-public class EstadoController {
+public class CategoriaController {
 
     @Autowired
-    private EstadoService estadoSer;
+    private CategoriaService categoriaSer;
 
-    // busca de estados
+    // busca de Categoria
     @GetMapping("/")
-    public List<Estado> buscarTodos() {
-        return estadoSer.buscarTodos();
+    public List<Categoria> buscarTodos() {
+        return categoriaSer.buscarTodos();
     }
 
-    // adicionar estado
+    // adicionar Categoria
     @PostMapping("/")
-    public Estado inserir(@RequestBody Estado estado) {
-        return estadoSer.inserir(estado);
+    public Categoria inserir(@RequestBody Categoria categoria) {
+        return categoriaSer.inserir(categoria);
     }
 
-    // alterar estado
+    // alterar Categoria
     @PutMapping("/")
-    public Estado alterar(@RequestBody Estado estado) {
-        return estadoSer.alterar(estado);
+    public Categoria alterar(@RequestBody Categoria categoria) {
+        return categoriaSer.alterar(categoria);
 
     }
 
-    // deletar estado
+    // deletar Categoria
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
-        estadoSer.excluir(id);
+        categoriaSer.excluir(id);
         return ResponseEntity.ok().build();
     }
 

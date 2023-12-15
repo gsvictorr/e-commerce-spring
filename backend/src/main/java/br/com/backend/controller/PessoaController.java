@@ -1,10 +1,5 @@
 package br.com.backend.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import br.com.backend.entity.Estado;
-import br.com.backend.service.EstadoService;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,39 +11,41 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.backend.entity.Pessoa;
+import br.com.backend.service.PessoaService;
 
 @RestController
-@RequestMapping("/api/estado")
-
-public class EstadoController {
+@RequestMapping("/api/pessoa")
+public class PessoaController {
 
     @Autowired
-    private EstadoService estadoSer;
+    private PessoaService pessoaSer;
 
-    // busca de estados
+    // busca de Pessoa
     @GetMapping("/")
-    public List<Estado> buscarTodos() {
-        return estadoSer.buscarTodos();
+    public List<Pessoa> buscarTodos() {
+        return pessoaSer.buscarTodos();
     }
 
-    // adicionar estado
+    // adicionar Pessoa
     @PostMapping("/")
-    public Estado inserir(@RequestBody Estado estado) {
-        return estadoSer.inserir(estado);
+    public Pessoa inserir(@RequestBody Pessoa pessoa) {
+        return pessoaSer.inserir(pessoa);
     }
 
-    // alterar estado
+    // alterar Pessoa
     @PutMapping("/")
-    public Estado alterar(@RequestBody Estado estado) {
-        return estadoSer.alterar(estado);
+    public Pessoa alterar(@RequestBody Pessoa pessoa) {
+        return pessoaSer.alterar(pessoa);
 
     }
 
-    // deletar estado
+    // deletar Pessoa
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
-        estadoSer.excluir(id);
+        pessoaSer.excluir(id);
         return ResponseEntity.ok().build();
     }
-
 }
