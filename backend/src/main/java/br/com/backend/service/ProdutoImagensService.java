@@ -1,5 +1,9 @@
 package br.com.backend.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +32,23 @@ public class ProdutoImagensService {
     public ProdutoImagens inserir(Long idProduto, MultipartFile file) {
         Produto produto = produtoRep.findById(idProduto).get();
         ProdutoImagens imagemNova = new ProdutoImagens();
+
+        // salva a imagem no caminho
+        try {
+            if (!file.isEmpty()) {
+                byte[] bytes = file.getBytes();
+                String nomeImagem = String.valueOf(produto.getId())
+                        + file.getOriginalFilename();
+                Path caminho = Paths.get("c:/imagensProduto/" +nomeImagem);
+                Files.write(caminho, bytes);
+                imagemNova.setNome(nomeImagem);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // salva as infos da imagem no banco
+
         imagemNova.setProduto(produto);
         imagemNova.setDataCriacao(new Date());
         imagemNova = imagemRep.saveAndFlush(imagemNova);
