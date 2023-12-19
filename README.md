@@ -1,2 +1,4 @@
-#E-commerce (loja virtual)
-Desenvolvimento de um E-commerce utilizando Java Spring, React e Next.js
+###E-commerce (loja virtual)👨‍💻
+
+- ⚡ Em desenvolvimento...
+- 🖥️ Java Spring, React e Next.js 
