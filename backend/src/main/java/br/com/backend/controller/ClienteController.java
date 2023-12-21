@@ -8,19 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.backend.dto.ClienteRequestDTO;
 import br.com.backend.entity.Pessoa;
-import br.com.backend.service.PessoaService;
+import br.com.backend.service.ClienteService;
 
 @RestController
 @RequestMapping("/api/cliente")
 public class ClienteController {
 
     @Autowired
-    private PessoaService pessoaSer;
+    private ClienteService clienteSer;
 
     // Inserir cliente
     @PostMapping("/")
     public Pessoa inserir(@RequestBody ClienteRequestDTO cliente) {
-        Pessoa pessoa = new ClienteRequestDTO().converter(cliente);
-        return pessoaSer.inserir(pessoa);
+        return clienteSer.registrar(cliente);
     }
 }
