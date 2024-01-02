@@ -1,0 +1,35 @@
+<html>
+<head>
+<style type="text/css">
+div{
+    background: linear-gradient(180deg, rgba(10,196,227,1) 0%, rgba(246,246,246,1) 100%);
+    border-radius: 15px;
+}
+
+h1{
+    text-align: center;
+    color: #fff;
+}
+
+h3{
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+}
+
+p{
+    color: #000;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<div>
+<h1>SpringMall</h1>
+<h3>Olá, ${nome}</h3>
+<br>
+<p>${mensagem}</p>
+<br>
+</div>
+</body>
+</html>
