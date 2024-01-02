@@ -15,9 +15,11 @@ public class ClienteService {
     @Autowired
     private ClienteRepository pessoaRep;
 
-
     @Autowired
     private PermissaoPessoaService permissaoPessoaService;
+
+    @Autowired
+    private EmailService emailService;
 
     // serviço de registrar cliente
     public Pessoa registrar(ClienteRequestDTO cliente) {
@@ -25,6 +27,8 @@ public class ClienteService {
         novaPessoa.setDataCriacao(new Date());
         Pessoa pessoaNova = pessoaRep.saveAndFlush(novaPessoa);
         permissaoPessoaService.vincularPessoaPermissaoCliente(pessoaNova);
+        emailService.enviarEmailSimples(pessoaNova.getEmail(), "Cadastro na loja SpringMall",
+                "O seu registro na SpringMall foi realizado com sucesso. Em breve receberá a senha de acesso por email!");
         return pessoaNova;
     }
 }
