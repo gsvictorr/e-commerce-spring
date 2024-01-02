@@ -30,6 +30,9 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private String email;
+    private String codigoRecuperacaoSenha;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataEnvioCodigo;
     private String senha;
     private String endereco;
     private String cep;
@@ -37,7 +40,7 @@ public class Pessoa {
     @JoinColumn(name = "idCidade")
     private Cidade cidade;
 
-    @OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = {CascadeType.PERSIST})
+    @OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = { CascadeType.PERSIST })
     @Setter(value = AccessLevel.NONE)
     private List<PermissaoPessoa> permissaoPessoas;
 
