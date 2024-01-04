@@ -1,4 +1,4 @@
-<h2>E-commerce (loja virtual)👨‍💻 <h2/>
+<h2>REST API de e-commmerce (loja virtual)👨‍💻 <h2/>
 
 - ⚡ Em desenvolvimento...
-- 🖥️ Java Spring, React e Next.js 
+- 🖥️ Java Spring Boot
